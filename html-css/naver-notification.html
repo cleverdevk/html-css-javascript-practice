@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet"> 
+    <title>NAVER Notification</title>
+    <style>
+        .notification-container{
+            display: flex;
+            width: 350px;
+            padding: 20px 10px;
+            border: 1px solid orange;
+            background-color: rgb(255, 244, 224);
+            align-items: center;
+            border-radius: 2%;
+        }
+        .div-margin{
+            margin-left:30px;
+        }
+        .profile{
+            display: flex;
+            align-items: center;
+        }
+        .profile-photo{
+            border:2px orange solid;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            background-image: url('./image/cat.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        .profile-name{
+            margin-left: 10px;
+            margin-right: 5px;
+            font-family: 'Noto Sans KR', sans-serif;
+            color:  #f7a400;
+        }
+        .img-size{
+            width: 40px;
+            height: 40px;
+        }
+        .badge-notification{
+            position: absolute;
+            top:-5px;
+            right: 0px; 
+            background-color: tomato;
+            color:  white;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border-radius: 100%;
+        }
+        .badge-email{
+            position: absolute;
+            top: -5px;
+            right: -15px; 
+            background-color: tomato;
+            color:  white;
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            border-radius: 20%;
+        }
+        .notification{
+            position: relative;
+        }
+        .email{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container div-margin">
+        <div class="profile">
+            <div class="profile-photo"></div>
+            <span class="profile-name">강인배</span>
+        </div>
+        <div class="notification div-margin">
+            <img src="image/notification.png" class="img-size">
+            <span class="badge-notification">1</span>
+        </div>
+        <div class="email div-margin">
+            <img src="image/mail.png" class="img-size">
+            <span class="badge-email">99+</span>
+        </div>
+        <div class="menu div-margin">
+            <img src="image/grid.png" class="img-size">
+        </div>
+    </div>
+</body>
+</html>

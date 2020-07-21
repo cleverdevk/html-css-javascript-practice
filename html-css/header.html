@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <style>
+        .header-wrapper{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid black;
+            height: 70px;
+            padding: 0px 20px;
+            align-items: center;
+            position: fixed;
+            width: 98%;
+        }
+        .menu-wrapper{
+            display: flex;
+        }
+        .login-wrapper{
+            display: flex;
+        }
+        body{
+            height: 1200px;
+        }
+        .item-wrapper{
+            height: 50px;
+            width: 100px;
+            border:1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-wrapper">
+        <div class="menu-wrapper">
+            <div class="item-wrapper">메뉴1</div>
+            <div class="item-wrapper">메뉴2</div>
+            <div class="item-wrapper">메뉴3</div>
+        </div>
+        <div>
+            LOGO
+        </div>
+        <div class="login-wrapper">
+            <div class="item-wrapper">회원가입</div>
+            <div class="item-wrapper">로그인</div>
+        </div>
+    </header>
+</body>
+</html>

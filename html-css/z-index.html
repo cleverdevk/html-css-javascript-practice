@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* z-index는 3차원 요소인 absolute, relative, fixed 상태에서만 동작을 한다.  맨 앞으로, 맨 뒤로 같은 기능이라고 보면 된다. */
+        .box{
+            width:  120px;
+            height: 120px;
+            position: absolute;
+        }
+        .box1{
+            background-color:   coral;
+            top:20px;
+            left:200px;
+            z-index: 99;
+        }
+        .box2{
+            background-color:   skyblue;
+            top:50px;
+            left:260px;
+        }
+        .box3{
+            background-color:   chocolate;
+            top:80px;
+            left:230px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+
+</body>
+</html>

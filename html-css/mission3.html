@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Nunito+Sans:ital,wght@0,900;1,400&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .main-background{
+            background-image: url("./image/j5.jpg");
+            background-size: cover;
+            width: 1280px;
+            height: 720px;
+            border: 5px solid lightgreen;
+            border-radius: 30px;
+            position: relative;
+        }
+        .text-overlay{
+            font-family: 'Heebo', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
+            text-shadow: -5px 0 white, 0 5px white, 5px 0 white, 0 -5px white;
+            font-size: 160px;
+            font-weight: bold;
+            color: rgb(14, 143, 14);
+            position: absolute;
+            -webkit-transform: rotate(-15deg);
+        }
+        .upper-text{
+            top: 30%;
+            right:10%;
+        }
+        .lower-text{
+            top: 50%;
+            right:3%;
+            font-size: 200px;
+        }
+        .play-button{
+            background-image: url("image/play-button\ \(1\).png");
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-background">
+        <div class="text-overlay upper-text">Jordy</div>
+        <div class="text-overlay lower-text">V-Log</div>
+        <div class="play-button"></div>
+    </div>
+</body>
+</html>

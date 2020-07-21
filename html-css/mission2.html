@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-container{
+            background-color: lightgreen;
+            width: 780px;
+            height: 780px;
+            border: 1px solid lightgreen;
+        }
+        .image-wrapper{
+            margin-left: 50px;
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+            border: 5px solid white;
+            border-radius: 20px;
+            background-blend-mode: screen;
+        }
+        .main-container-horizon{
+            display: flex;
+            margin-top: 50px;
+        }
+        .im1{
+            background-image: url("image/j1.png");
+        }
+        .im2{
+            background-image: url("image/j2.png");
+        }
+        .im3{
+            background-image: url("image/j3.png");
+        }
+        .im4{
+            background-image: url("image/j4.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="main-container-horizon">
+            <div class="image-wrapper im1"></div>
+            <div class="image-wrapper im2"></div>
+        </div>
+        <div class="main-container-horizon">
+            <div class="image-wrapper im3"></div>
+            <div class="image-wrapper im4"></div>
+        </div>
+        
+
+    </div>
+</body>
+</html>
