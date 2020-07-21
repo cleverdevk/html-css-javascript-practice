@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+        let arr1 = [1,2,3,1,2,3,1,2,3];
+        let arr2 = ['A','E','W','Q','A'];
+
         function c(a){
             return a*(a+1) / 2; 
         }
@@ -54,9 +57,32 @@
             }
         }
 
+        function problem4(){
+            let k = 0;
+            for(let x = 0; x<arr1.length;x++){
+                if(arr1[x] === 1){
+                    k++;
+                }
+            }
+            console.log(k);
+        }
+
+        function problem5(){
+            let flag = false;
+            for(let x = 0; x<arr2.length;x++){
+                if(arr2[x] === 'A'){
+                    flag = true;
+                    break;
+                }
+            }
+            console.log(flag?"O":"X");
+        }
+
         //problem1();
         //problem2();
-        problem3();
+        //problem3();
+        //problem4();
+        problem5();
 
 
     </script>
