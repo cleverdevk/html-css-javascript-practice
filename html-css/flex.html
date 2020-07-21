@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a-wrapper{
+            border:1px solid black;
+            display: flex;
+            /*중앙정렬*/
+            justify-content: center;
+            /*왼쪽*/
+            justify-content: start;
+            /*오른쪽*/
+            justify-content: flex-end;
+            /*각 요소 비율에 맞춤*/
+            justify-content: space-between;
+
+            justify-content: space-around;
+
+            height: 300px;
+
+            align-items: center;
+        }
+
+        .b-wrapper{
+            display: flex;
+            border:2px coral solid;
+        }
+
+        .c-wrapper{
+            display: flex;
+            margin-top: 70px;
+            height: 300px;
+            background-color: skyblue;
+            /* flex direction column일 때는 align-items가 세로가 아닌 가로정렬
+            justify-content는 가로정렬이아닌 세로정렬로 축이 뒤집힘 */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .d-wrapper{
+            height: 400px;
+            display: flex;
+            /* 일정 이상 간격을 넘어갈 때 flex wrap은 줄을 넘겨주는 역할 */
+            flex-wrap: wrap;
+        }
+
+        .f-wrapper{
+            margin-top: 40px;
+            height: 400px;
+            background-color: tan;
+            display: flex;
+        }
+
+        .boxa{
+            flex:1;
+            background-color:yellow;
+        }
+
+        .boxb{
+            flex:2;
+            background-color:wheat;
+        }
+
+        .boxc{
+            flex:1;
+            background-color:yellowgreen;
+        }
+
+        .box{
+            border:1px solid black;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+        }
+
+        .box1{
+            border:1px solid black;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            flex:1;
+        }
+
+        .box2{
+            border:1px solid black;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+        }
+
+        .box3{
+            border:1px solid black;
+            width: 80px;
+            height: 80px;
+            background-color: coral;
+        }
+
+        .box4{
+            border:1px solid black;
+            width: 80px;
+            height: 80px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="a-wrapper">
+        <div class="box">a</div>
+        <div class="box">a</div>
+        <div class="box">a</div>
+        <div class="box">a</div>
+    </div>
+
+    <div class="b-wrapper">
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+        <div class="box1">b</div>
+    </div>
+
+    <div class="c-wrapper">
+        <div class="box2">c</div>
+        <div class="box2">c</div>
+        <div class="box2">c</div>
+    </div>
+
+    <div class="d-wrapper">
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+        <div class="box3">d</div>
+    </div>
+
+    <div class="f-wrapper">
+        <div class="box4 boxa"></div>
+        <div class="box4 boxb"></div>
+        <div class="box4 boxc"></div>
+    </div>
+</body>
+</html>

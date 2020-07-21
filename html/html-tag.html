@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello</title>
+</head>
+<body>
+    <!-- a tag = 다른 웹사이트로 이동할 때 쓰는 태그 -->
+    <a href="https://www.naver.com" target="_self" title="naver">네이버</a>
+    <!-- 주석은 ctrl + / -->
+
+    <!-- 헤더 태그 -->
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+
+    <!-- 리스트 -->
+    <!-- ul = unordered list, ol = ordered list -->
+    <ul>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        <li>list4</li>
+    </ul>
+
+    <ol>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        <li>list4</li>
+    </ol>
+
+    <!-- 단락을 뜻하는 태그 -->
+    <p>단락쓰~</p>
+
+    <!-- img -->
+    <img src="IMG_5151.jpg" width="800" height="500" alt="hello">
+    <!-- strong : 강조를 위한 태그 -->
+    <!-- br -->
+    <br/>
+    <strong>나는 강조다!</strong>
+
+    <br/>
+
+    <input placeholder="please input" value="초기값">
+    <br/>
+    <input type="text">
+    <br/>
+    <!-- checkbox는 다중선택이 가능하다. -->
+    <!-- name으로 묶여있다고 생각하면 됨 -->
+    <input type="checkbox" name="과일" value="사과"> 사과
+    <input type="checkbox" name="과일" value="배" checked> 배
+    <input type="checkbox" name="과일" value="포도"> 포도
+
+    <br/>
+
+    <!-- 라디오 버튼은 다중선택이 불가능하다. -->
+    <input type="radio" name="야채" value="토마토"> 토마토
+    <input type="radio" name="야채" value="브로콜리"> 브로콜리
+    <input type="radio" name="야채" value="파" checked> 파
+
+    <br/>
+
+    <!-- date : 날짜 -->
+    <input type="date">
+
+    <br/>
+
+    <!-- range 속성 : 음량 조절과 같은 것 -->
+    <input type="range">
+
+    <br/>
+    <!-- color : 색을 고를 때 -->
+    <input type="color">
+    <br/>
+    <!-- file : 파일 등을 첨부할 때 사용 -->
+    <input type="file">
+    <br/>
+    <!-- button -->
+    <input type="button" value="버튼데스">
+    <br/>
+    <!-- textarea는 닫힌 태그가 존재한다. -->
+    <textarea>텍스트에어리어입니다.</textarea>
+    <br/>
+    <br/>
+    <!-- form -->
+    <form>
+        <input type="text" placeholder="ID"/>
+        <br/>
+        <input type="password"/>
+        <br/>
+        <input type="submit" value="login"/>
+    </form>
+
+    <!-- select -->
+    <select name="쥬스">
+        <option>orange</option>
+        <option selected>grape</option>
+        <option>tangerin</option>
+        <option>grapefruit</option>
+    </select>
+
+    <br/>
+
+    <!-- span -->
+    <span>별 의미가 없지만 css 등을 적용할 때 나중에 구분이 된다.</span>
+
+    <!-- div -->
+    <div>
+        묶어주는 박스 같은 개념이다. 자동으로 줄 바꿈을 해준다.
+    </div>
+
+    <!-- 블럭요소와 인라인 요소 -->
+    <!-- h1~5, p, div와 같은 한칸을 전부 차지 = 블럭 -->
+    <!-- span, input, select, textarea같은 것들은 너비만큼만 차지하는 요소 = 인라인 -->
+
+    
+
+</body>
+</html>

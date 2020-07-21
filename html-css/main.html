@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css주요 속성 배우기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* 전체 적용 두가지 방법 */
+        *{
+            font-family: 'Roboto Mono', monospace;
+        }
+        body{
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .test1{
+            font-size: 40px;
+            color:blue;
+            font-weight: bold;
+            /*font-family: 'Roboto Mono', monospace;*/
+            /*외장(구글)폰트 사용하기*/
+            
+            /* width 와 height */
+        }
+        .test2{
+            color:white;
+            background-color: coral;
+            width: 200px;
+            height: 200px;
+            /* 상위 요소에 대한 퍼센트 */
+            width: 20%;
+            height: 20%;
+            text-align: center;
+        }
+        .test3{
+            background-image: url("../iframe-image/griffith.jpg");
+            width: 600px;
+            height: 800px;
+            /* contain은 이미지를 비율에 맞게 채움, cover는 늘림 */
+            background-size:contain;
+            background-position: center center;
+
+        }
+        .margin-aa{
+            margin-top: 100px;
+            margin-bottom: 10px;
+        }
+        .margin-bb{
+            margin-bottom: 30px;
+            margin: 30px 30px 30px 30px; /* 위 오른쪽 아래 왼쪽 순으로 */
+            margin: 30px 10px; /* 위, 아래랑 왼쪽,오른쪽 */
+
+            /* solid 그냥 직선 dotted 점선 */
+            border-top:3px solid coral;
+            border-right:3px dotted coral;
+            border-bottom:3px solid coral;
+            border-left:3px dotted coral;
+
+            /* 전체 한번에 */
+            border:2px solid cornflowerblue;
+            border-radius: 10px; /* 둥근 모서리 */
+        }
+
+        .circle{
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            background-color: cyan;
+            text-align: center;
+        }
+        /* 마진 병합 현상 : 서로의 마진이 겹칠 때 큰 부분만 나타나게 된다 */
+
+
+        /*가상선택자*/
+        .circle:hover{
+            /*마우스 올라갈 때 색상 바뀜*/
+            background-color: green;
+        }
+
+        .focus-input:focus{
+            /*focus를 받을 때만 배경색 바뀜*/
+            background-color: red;
+        }
+        .div-c:hover{
+            background-color: greenyellow;
+        }
+        .div-d:hover{
+            background-color: hotpink;
+        }
+        .div-c{
+            background-color: indianred;
+            width: 200px;
+            height: 200px;
+        }
+        .div-d{
+            background-color:indigo;
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="test1">Almost</div>
+    <div class="test2">Braclet</div>
+    <div class="test3">Crayon</div>
+    <br/>
+    <br/>
+    <div class="margin-aa">aa</div>
+    <div class="margin-bb">bb</div>
+
+    <div class="circle">circle</div>
+
+    <input class="focus-input"/>
+
+    <div class="div-c">
+        <div class="div-d">aa</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+        div{
+            border:1px solid black;
+            /* 블록으로 바꾸기! */
+            
+            /*display: inline ;*/
+            /* inline 요소는 w,h를 지정해도 지정되지 않음 */
+            /*
+            width: 200px;
+            height: 200px;
+            */
+        }
+        span{
+            border:1px solid black;
+            /* 블록으로 바꾸기! */
+            /*display: block;*/
+        }
+        h3{
+            /* none을 지정해주면 보이지 않음 */
+            display: none;
+        }
+        .inline-block-span{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- none -->
+    <h3>aaaa</h3>
+    <!-- block 요소 -->
+    <div>aa</div>
+    <!-- inline 요소 -->
+    <span>bb</span>
+    <!-- inline-block 요소 -->
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. <span class="inline-block-span">kkk</span> Cumque, ipsum quod? Ipsam sint placeat,  <span class="inline-block-span">kkk</span> dicta doloremque dolorem ex dolor illo nesciunt repudiandae temporibus! <span class="inline-block-span">kkk</span> Assumenda debitis asperiores, error magni eos ut?</div>
+
+    <!-- flex -->
+</body>
+</html>
