@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Title</title>
+</head>
+<body>
+    <h1>A heading</h1>
+    <div class="a-wrapper">
+        <a href="https://www.mcdonald.co.kr">link text</a>
+    </div>
+    <div id="test">test</div>
+    <div class="test-class">class</div>
+    <div class="test-class">class2</div>
+    <script>
+
+        // 요소 값 수정 가능
+        let a = document.children[0].children[1].children[0];
+        a.textContent="맥도날드";
+        console.log(a);
+
+        // 위와 같이 children으로 접근하면 너무 귀찮다! 구조 외워야한다.
+        // id를 통한 접근
+        let test = document.getElementById("test");
+        console.log(test.innerHTML);
+
+        // class를 통한 접근, 여러가지 가져온다! s가 붙는것에 주의
+        let testClass = document.getElementsByClassName("test-class");
+        console.log(testClass[0]);
+
+        //QuerySelector = Best다.
+        let q1 = document.querySelector("#test");
+        console.log("q1로 가져온 애 : ", q1);
+
+        let q2 = document.querySelector(".test-class");
+        console.log("q2로 가져온 애 : ", q2.innerHTML);
+
+        //QuerySelectorAll -> 여러개 배열에 담아온다.
+        let z = document.querySelectorAll("div");
+        console.log(z);
+
+        let y = document.querySelectorAll(".test-class");
+        console.log(y);
+
+        //************ 연습 *******************
+        const h1 = document.querySelector("h1");
+        alert(h1.innerHTML);
+        let a_tag = document.querySelector(".a-wrapper>a");
+        a_tag.innerHTML = "BBQ WORLD";
+
+        // split
+        let p = "KFC|ABC|CCE";
+        let arr = p.split("|");
+        console.log(arr);
+
+        // for of (python for i in arr 과 비슷한 문법임!)
+        for(let x of arr){
+            console.log(x);
+        }
+
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

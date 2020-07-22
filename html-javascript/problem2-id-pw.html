@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .align{
+            padding: 0 auto;
+            display: flex;
+            margin: 10px 10px;
+            align-content: center;
+            justify-content: center;
+        }
+        .id-no-input{
+            background-color: rgb(255, 178, 164);
+        }
+        .pw-no-input{
+            background-color: rgb(255, 178, 164);
+        }
+    </style>
+</head>
+<body>
+        <div class="align">
+            <input type="text" class="id"/>
+        </div>
+        <div class="align">
+            <input type="password" class="password"/>
+        </div>
+        <div class="align">
+            <button class="submit"> 회원가입 </button>
+        </div>
+
+    <script>
+        let btn = document.querySelector(".submit");
+        
+        btn.addEventListener("click", function(){
+            let id = document.querySelector(".id");
+            let no_id = document.querySelector(".id-no-input");
+            if(id===null) id = no_id;
+            let pw = document.querySelector(".password");
+            let no_pw = document.querySelector(".pw-no-input");
+            if(pw===null) pw = no_pw;
+            console.log(id.value, pw.value);
+            if(id.value==="" ||pw.value===""){
+                alert("아이디 비밀번호를 모두 입력하세요.");
+                if(id.value===""){
+                    id.focus();
+                    id.setAttribute("class","id-no-input");
+                }
+                else{
+                    pw.focus();
+                }
+            }
+            else{
+                alert("회원가입이 완료되었습니다.");
+                id.value="";
+                pw.value="";
+            }
+        })
+    </script>
+</body>
+</html>

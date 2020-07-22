@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            background-color: coral;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">listener</button>
+    <button onclick="btnclk()">inline</button>
+
+    <script>
+        function btnclk(){
+            // let r = Math.ceil(Math.random() * 10);
+            // alert(r);
+            let btn = document.createElement("button");
+            btn.textContent = "벝은";
+            // 이런식으로 class 값을 주면, 미리 설정된 css를 적용 가능하다.
+            btn.setAttribute("class","btn");
+            btn.addEventListener("click",function(){
+                let r = Math.ceil(Math.random() * 10);
+            alert(r);
+            });
+            document.body.append(btn);
+            // document.body.prepend(btn);
+        }
+        const btn = document.querySelector(".btn");
+        btn.addEventListener("click",function(){
+            let r = Math.ceil(Math.random() * 10);
+            alert(r);
+        });
+    </script>
+</body>
+</html>

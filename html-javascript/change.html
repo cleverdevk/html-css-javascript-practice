@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select class="animal">
+        <option value="cat" selected>고양이</option>
+        <option value="dog" >개</option>
+        <option value="crab" >게</option>
+        <option value="panda" >판다</option>
+    </select>
+
+    <input type="text" class="text"/>
+
+    <script>
+        let s = document.querySelector(".animal");
+        s.addEventListener("change", function(){
+            let val = s.options[s.selectedIndex].value;
+            let txt = s.options[s.selectedIndex].text;
+            console.log(s.selectedIndex, val, txt);
+        });
+        let t = document.querySelector(".text");
+        t.addEventListener("change",function(){
+            console.log("changed");
+        })
+        </script>
+    </script>
+</body>
+</html>

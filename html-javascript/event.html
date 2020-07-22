@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>이게 바뀔까?</h1>
+    <button class="clickButton">클릭해 임마</button>
+    <button onclick=cclick()>클릭해봐</button>
+
+    <script>
+        const btn = document.querySelector(".clickButton");
+        btn.addEventListener("click", function(){
+            const h1 = document.querySelector("h1");
+            if(h1.innerHTML === "이게 바뀔까?"){
+                h1.innerHTML = "바뀌지 그럼!";
+            }
+            else{
+                h1.innerHTML = "이게 바뀔까?";
+            }
+        });
+
+        function cclick(){
+            alert("clicked");
+        }
+    </script>
+</body>
+</html>

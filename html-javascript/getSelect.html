@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="id-input" value="asdf" />
+    <input type="checkbox" name="city" value="SEOUL"/>서울
+    <input type="checkbox" name="city" value="GONGJU" checked/>공주
+    <input type="checkbox" name="city" value="JEJU"/>제주
+
+    <div class="test">test</div>
+    <div class="test">test</div>
+    <div class="test">test</div>
+    <div class="test">test</div>
+    <div class="test">test</div>
+
+    <script>
+        const id = document.querySelector(".id-input");
+        const cities = document.querySelectorAll("input[name=city]:checked");
+        console.log(id.value);
+        for(let city of cities){
+            console.log(city.getAttribute("value"));
+        }
+
+        const tests = document.querySelectorAll(".test");
+        console.log(tests);
+
+        for(let t of tests){
+            t.text
+        }
+    </script>
+</body>
+</html>
