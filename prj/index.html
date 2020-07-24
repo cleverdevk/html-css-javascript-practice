@@ -447,13 +447,21 @@
             <div class="h1 bg-dark p-4 text-white w-100 text-center text-shadow-2-gray">
                 Projects Link
             </div>
+            <h3 class="mt-3" style="padding-right: 80%;">Projects what I did.</h3>
             <div class="link-container p-5">
                 <div class="card m-3" style="width: 18rem;">
                     <img src="./image/guava.png" class="card-img-top" alt="guava" style="width: 17.5rem; height: 11rem;">
                     <div class="card-body">
                       <h5 class="card-title">GUAVA</h5>
                       <p class="card-text" style="height: 6rem;">Grab UAV Accurately - Low Cost UAV Surveilance System.</p>
-                      <a href="https://github.com/seonghapark/cuav" class="btn btn-primary">Go</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+                            data-title="GUAVA"
+                            data-full-name="Grab UAV Accurately"
+                            data-content="IITP에서 주관한 2019 Fall Purdue University Capstone Project로 진행된 프로젝트이며, Purdue University와 Argonne National Labs.의 지원을 받아 진행했다.
+                                            레이더와 카메라를 이용한 저비용 무인 항공기 탐지 시스템. 카메라 사진과 SAR Image를 통해 UAV를 탐지하는 시스템. 
+                                            라즈베리파이, Synthetic Aperture Radar, Pi Camera, ROS, Flask를 이용해 개발했다."
+                            data-image-url="./image/guava2.jpg"
+                            data-page-url="https://github.com/seonghapark/cuav">Detail</button>
                     </div>
                   </div>
                   <div class="card m-3" style="width: 18rem;">
@@ -461,7 +469,14 @@
                     <div class="card-body">
                       <h5 class="card-title">DDOYAK(또약)</h5>
                       <p class="card-text" style="height: 6rem;">약을 규칙적으로 복용해야하는 사람들에게 복용을 도와줄 수 있도록 돕는 디바이스와 안드로이드 Application</p>
-                      <a href="https://github.com/cleverdevk/DDOYAK" class="btn btn-primary">Go</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+                            data-title="DDOYAK (또 약)"
+                            data-full-name="또 약 안 먹었어?"
+                            data-content="교내 학술동아리 CLUG에서 팀을 이루어 공모전 출품을 목표로 진행한 IoT 프로젝트이며, 교내 학술제 수상 및 전국 임베디드소프트웨어 경진대회에 본선 진출 및 작품 전시를 하였다.
+                                            또약 프로젝트는 약을 규칙적으로 복용해야하는 사람들에게 복용을 도와줄 수 있도록 돕는 라즈베리파이 기반 디바이스와 안드로이드 Application이다.
+                                            라즈베리파이, 초음파 센서, 스텝 모터를 사용하여 디바이스를 제작하고, Google Cloud Platform의 Cloud Messaging, Realtime Database를 사용하여 개발하였다. "
+                            data-image-url="./image/ddoyak2.JPG"
+                            data-page-url="https://github.com/cleverdevk/DDOYAK">Detail</button>
                     </div>
                   </div>
                   <div class="card m-3" style="width: 18rem;">
@@ -469,7 +484,12 @@
                     <div class="card-body">
                       <h5 class="card-title">Portfolio</h5>
                       <p class="card-text" style="height: 6rem;">Shell concept Portfolio - in progress</p>
-                      <a href="https://cleverdevk.github.io/portfolio/load.html" class="btn btn-primary">Go</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" 
+                            data-title="DDOYAK (또 약)"
+                            data-full-name="또 약 안 먹었어?"
+                            data-content="HTML/CSS/Javascript만으로 개발 중인 Linux Shell Concept의 Portfolio이다. 현재 진행중이며, 아직 기기간 호환성이 보장되지 않는다."
+                            data-image-url="./image/pf2.JPG"
+                            data-page-url="https://cleverdevk.github.io/portfolio/load.html">Detail</button>
                     </div>
                   </div>
                   <div class="card m-3" style="width: 18rem;">
@@ -532,6 +552,34 @@
                 </div>
             </img>
         </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="full-name" class="col-form-label" style="font-weight: bold;"></label>
+                      <label for="content" class="col-form-label"></label>
+                      <label for="picture-text" class="col-form-label" style="font-weight: bold;">결과물 사진</label>
+                      <img for="modal-image" src="./image/cat.jpg" style="width: 100%; margin-bottom: 20px;"/>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="btn btn-primary" target="_blank">Go To Project Page</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -539,31 +587,47 @@
     
     <script>
         $(document).ready(function(){
-  // Add scrollspy to <body>
-  $('body').scrollspy({target: ".navbar", offset: 50});   
+        // Add scrollspy to <body>
+        $('body').scrollspy({target: ".navbar", offset: 50});   
 
-  // Add smooth scrolling on all links inside the navbar
-  $("#navbar-ex a").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+        // Add smooth scrolling on all links inside the navbar
+        $("#navbar-ex a").on('click', function(event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
 
-      // Store hash
-      var hash = this.hash;
+            // Store hash
+            var hash = this.hash;
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    }  // End if
-  });
-});
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function(){
+        
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+            }  // End if
+        });
+        });
+        $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var title = button.data('title') // Extract info from data-* attributes
+        var full_name = button.data('full-name')
+        var content = button.data('content')
+        var imgsrc = button.data('image-url')
+        var pageurl = button.data('page-url')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text(title)
+        modal.find('.modal-body label:nth-child(1)').text(full_name)
+        modal.find('.modal-body label:nth-child(2)').text(content)
+        modal.find('.modal-body img').attr("src",imgsrc)
+        modal.find('.modal-footer a').attr("href",pageurl)
+        });
     </script>
 </body>
 </html>
