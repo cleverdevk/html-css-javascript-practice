@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function asyncAwaitStart(){
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(()=>resolve("완료되었습니다."),1500);
+            });
+            let result = await promise;
+            console.log(result);
+        }
+        let donotuse = "";
+        setTimeout(()=>{donotuse = "완료";},1500);
+        console.log(donotuse);
+        asyncAwaitStart();
+    </script>
+</body>
+</html>

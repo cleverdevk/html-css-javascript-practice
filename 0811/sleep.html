@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divdiv" style="background-color: skyblue; width: 400px; height: 400px; position: relative;"></div>
+    <script>
+
+        // 동기 방식 슬립
+        function sleep(delay){
+            let start = new Date().getTime();
+            let limit = start + delay;
+            while(true){
+                let now = new Date().getTime();
+                if(now >=limit) break;
+            }
+        }
+
+        function p1(){
+
+            sleep(1000);
+            alert("#");
+            
+            // 비동기 방식 슬립
+            setTimeout(() =>{
+                alert("#");
+            },3000);
+            console.log("##");
+        }
+
+        //p2
+        const div = document.querySelector("div");
+        div.addEventListener("click",()=>{
+            div.style.left = "200px";
+            setTimeout(()=>{
+                console.log("안녕");
+            },1500);
+        });
+
+        //p3
+        
+        console.log("HI");
+        setTimeout(()=>{
+            console.log("First");
+        },500);
+        setTimeout(()=>{
+            console.log("Second");
+        },1000);
+        setTimeout(()=>{
+            console.log("Third");
+        },2000);
+
+
+
+    </script>
+</body>
+</html>

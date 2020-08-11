@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 아래처럼 할 시에는 c때문에 값이 변경될 수 있어서 순수함수가 아니다.
+        // 하지만 const c = 10; 이라고 하면 항상 같게 유지되기 때문에 순수함수이다.
+        let c = 10;
+        function add(a,b){
+            return a + b + c;
+        }
+    </script>
+</body>
+</html>

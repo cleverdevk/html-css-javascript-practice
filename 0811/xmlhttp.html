@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function getData(){
+            const httpRequest = new XMLHttpRequest();
+
+            const responseReady = () => {
+                try{
+                    if(httpRequest.readyState == XMLHttpRequest.DONE){
+                        if(httpRequest.status === 200){
+                            return new Error("request Error Occured");
+                        }
+                    } else{
+                        return new Error("request Status is not Complete(4) : " + httpRequest.status);
+                    }
+                } catch(e){
+                    return new Error("Exception Occured : "+ e.description);
+                }
+            };
+            httpRequest.onreadystatechange = (e) => {
+                console.log(`
+                    state: ${httpRequest.readyState} /status: ${httpRequest.status} / ${responseReady()});
+                `);
+            };
+
+            httpRequest.open("GET", "https://jsonplaceholder.typicode.com/todos");
+            httpRequest.send();
+        }
+
+        getData();
+
+    </script>
+</body>
+</html>

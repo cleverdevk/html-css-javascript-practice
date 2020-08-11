@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const prom = new Promise();
+
+        function wakeUp(callback){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve("일어나기");
+            }, 100)
+            }) 
+        };
+
+        function eatMeal(callback){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve("밥먹기");
+            }, 1000)
+            }) 
+        };
+
+        function drinkCoffee(callback){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve("커피 마시기");
+            }, 1000)
+            }) 
+        };
+
+        function sleep(callback){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve("잠 자기");
+            }, 2000)
+            }) 
+        };
+
+
+        // 흠~ 여전히 콜백지옥같은걸
+        function p1(){
+            wakeUp().then(data =>{
+                console.log(data);
+                eatMeal().then(data => {
+                    console.log(data);
+                    drinkCoffee().then(data => {
+                        console.log(data);
+                        sleep().then(data => {
+                            console.log(data);
+                        })
+                    })
+                })
+            });
+        }
+
+        // promise chaining
+
+        function p2(){
+            wakeUp().then(data => {
+                console.log(data);
+                return eatMeal();
+            }).then(data => {
+                console.log(data);
+                return drinkCoffee();
+            }).then(data => {
+                console.log(data);
+                return sleep();
+            }).then(data => {
+                console.log(data);
+            });
+        }
+
+        // 이것도 짜증나서 async가 나왔다!
+        async function getAll(){
+            try{
+                let res1 = await wakeUp;
+                console.log(res1);
+                let res2 = await eatMeal;
+                console.log(res2);
+                let res3 = await drinkCoffee;
+                console.log(res3);
+                let res4 = await sleep;
+                console.log(res4);
+            }catch(err){
+                console.log(err);
+            }
+        }
+        //getAll();
+
+
+
+        // 이건뭐지? => 아무것도 아니다~
+        function px(){
+            prom.then(data =>{
+                console.log(data);
+            });
+        }
+        px();
+
+
+        
+
+        
+
+        
+    </script>
+</body>
+</html>

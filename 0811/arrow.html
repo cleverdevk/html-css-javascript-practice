@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Arrow function
+        let a = function(aaa){
+            alert("AA");
+            return 'aa';
+        }
+        let b = (aaa) => {
+            alert("AA");
+            return "aa";
+        }
+        let c = () => "aa";
+
+        let d = (a, b) => {
+            return a+b;
+        }
+
+        let e = (a, b) => a+b;
+
+        let pow = (x) => x*x;
+
+        console.log(pow(3));
+
+        // Q1. 300
+        let n = 10;
+        let zing = n => n*10;
+        let ger = n * 20;
+
+        let burger = zing(10) + ger;
+        alert(burger);
+
+        // Q2. 60
+        a = (v1, v2) => v1 * v2;
+        b = a(4,5) + a(5,6);
+        alert(a(1,10)+ b);
+
+        // Q3. 15
+        let run = (a,b)=>a() * b();
+        let result = run(()=>3,()=>5);
+        alert(result)
+
+        // Callback Function
+        function Run(){
+            alert("RUN");
+        }
+        function walk(){
+            alert("WALK");
+        }
+        function go(n, callback){
+            for(let i=0;i<n;i++){
+                callback();
+            }
+        }
+
+        go(2,Run);
+        go(3,walk);
+
+        
+
+
+    </script>
+</body>
+</html>

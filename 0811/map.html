@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [1,2,3,4,5,6];
+        const arr2 = ["A","BCD","EF","G"];
+        // 원본 배열을 변경하지 않음!
+        const arrLength = arr.map(el => el + 1);
+        console.log(arrLength);
+        console.log(arr);
+
+        const powArr = arr.map(n=>n*n);
+        const lenArr = arr2.map(n=>n.length);
+
+        console.log(powArr);
+        console.log(lenArr);
+
+        // every
+        // 조건을 전부 만족할 때만 true
+        // 렌더링 시에 주로 사용
+        const arr3 = [0,2,3,4];
+        const isbiggerThenOne = arr3.every(key => key > 1);
+        console.log(isbiggerThenOne);
+
+        // some
+        // 조건을 하나만 만족해도 true
+
+        const arr4 = [-1,0,2,3,1];
+        const res = arr4.some(key => key < 0);
+        console.log(res);
+
+        //indexOf
+        const food = ["치킨","돈까스","마라탕","삼겹살"];
+        const idx = food.indexOf("마라탕");
+        console.log(idx);
+
+        // findIndex
+        // 배열 안에 있는 값이 객체이거나 배열일 때는 findIndex를 사용
+        const todos=[
+            {
+                id:1,
+                text:"밥먹기",
+                done:true
+            },
+            {
+                id:2,
+                text:"치킨먹기",
+                done:true
+            },
+            {
+                id:3,
+                text:"집에가기",
+                done:false
+            },
+            {
+                id:4,
+                text:"자기",
+                done:false
+            },
+            {
+                id:5,
+                text:"졸기",
+                done:true
+            },
+        ];
+        const index = todos.findIndex(todo=>todo.id===3);
+        console.log(index);
+
+        // find
+        // 객체를 리턴
+        const obj = todos.find(todo=>todo.id===3);
+        console.log(obj);
+
+        // filter
+        // 조건에 맞는 것들을 배열로 리턴
+        const todos2 = todos.filter(todo => todo.done === true);
+        console.log(todos2);
+
+        const arrr = [1,2,3,4,5,6,7,8,9,10];
+        const arrr1 = arrr.filter(n=>n%2===1);
+        const arrr2 = arrr.filter(n=>(n>3&&n<9));
+
+        console.log(arrr1);
+        console.log(arrr2);
+
+        const bucketlist = [
+            {
+                id: 1,
+                text: "유럽 가기",
+                done: false
+            },
+            {
+                id: 1,
+                text: "제주도 가기",
+                done: true
+            },
+            {
+                id: 1,
+                text: "사진전 열기",
+                done: false
+            },
+            {
+                id: 1,
+                text: "삼성전자 들어가기",
+                done: false
+            },
+            {
+                id: 1,
+                text: "몰라",
+                done: true
+            }
+        ];
+
+        const notcomplete = bucketlist.filter(bklst => bklst.done===false);
+        console.log(notcomplete);
+
+        const counterBiggerThen = (list) => (list.filter(n => n > 10)).length;
+
+        const count = counterBiggerThen([1,2,3,4,5,6,7,10,20,30,50,70]);
+        console.log(count);
+
+        // splice 배열 특정 항목 제거 => 원본 배열 변경시킴.
+        // 인덱스 부터 몇개 지울지
+        const foods = ["치킨","마라탕","삼겹살"];
+        const mara = foods.indexOf("마라탕");
+        foods.splice(mara,1);
+        console.log(foods);
+
+        // slice => 기본 배열 유지
+        const numbers = [10,20,30,40];
+        const slicedNumbers = numbers.slice(0,2);
+        console.log(numbers);
+        console.log(slicedNumbers);
+
+        // join => 배열 안의 값들을 문자열 형태로 합쳐준다.
+        const array = [1,3,5,6];
+        const joinedArray = array.join();
+        const joinedArray2 = array.join(" ");
+        const joinedArray3 = array.join("|");
+
+        console.log(joinedArray);
+        console.log(joinedArray2);
+        console.log(joinedArray3);
+
+        // concat => 배열을 합칠 때 사용한다. 원본 배열 유지
+        const ar1 = [1,3,5];
+        const ar2 = [7,8,9];
+        const concatArr = ar1.concat(ar2);
+        console.log(concatArr);
+
+
+
+    </script>
+</body>
+</html>

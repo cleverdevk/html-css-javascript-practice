@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const object = {a:1, b:2};
+        const {a,b} = object;
+        console.log(a);
+        console.log(b);
+
+        //spread 연산자 쩜쩜쩜
+        const slime = {
+            name : "슬라임"
+        };
+        const cuteSlime = {
+            ...slime,
+            attribute:"cute"
+        };
+        const redCuteSlime = {
+            ...cuteSlime,
+            color:"red"
+        };
+        console.log(slime);
+        console.log(cuteSlime);
+        console.log(redCuteSlime);
+
+        // rest 
+        let n = [1,2,3,4,5,6,7,8,9,10];
+        let n2 = [...n, 11,12];
+        console.log(n2);
+
+        const rice = {
+            egg: "계란",
+            a: "a",
+            b: "b"
+        };
+        const {egg, ...rest} = rice;
+        console.log(egg);
+        console.log(rest);
+    </script>
+</body>
+</html>

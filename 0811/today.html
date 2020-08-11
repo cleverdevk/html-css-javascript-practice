@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function wakeUp(callback){
+            setTimeout(() => {
+                callback("일어나기");
+            }, 100)
+        };
+
+        function eatMeal(callback){
+            setTimeout(() => {
+                callback("밥먹기");
+            }, 1000)
+        };
+
+        function drinkCoffee(callback){
+            setTimeout(() => {
+                callback("커피 마시기");
+            }, 1000)
+        };
+
+        function sleep(callback){
+            setTimeout(() => {
+                callback("잠 자기");
+            }, 2000)
+        };
+
+        wakeUp(function(data){
+            console.log(data);
+            eatMeal(function(data){
+                console.log(data);
+                drinkCoffee(function(data){
+                    console.log(data);
+                    sleep(function(data){
+                        console.log(data);
+                    })
+                })
+            })
+        });
+    </script>
+</body>
+</html>

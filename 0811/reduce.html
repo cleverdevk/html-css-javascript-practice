@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // reduce(("누산","현재값","현재의 인덱스 값", "원본 배열") => Callback(), "초기값")
+        const arr = [1,2,3,4,5];
+        const sum = arr.reduce((acc,cur) => {
+            console.log(acc, "누산");
+            console.log(cur, "현재");
+            return acc + cur;
+        });
+        console.log(sum);
+
+        const arr2 = ["강인배","파이리","강인배","파이리","파이리","피카츄"];
+        const result = arr2.reduce((acc,cur)=>{
+            if(acc[cur]){
+                acc[cur]++;
+            }
+            else{
+                acc[cur] = 1;
+            }
+            return acc;
+        },[]);
+        console.log(result);    
+        
+        const increment = (input) => input + 1;
+        const decrement = (input) => input - 1;
+        const squared = (input) => input*input;
+        const half = (input) => input / 2;
+
+        const initialValue = 1;
+        const pipeLine = [increment, decrement, increment, increment, squared, half, increment, squared, half, increment, squared, half];
+
+        const res = pipeLine.reduce((acc,cur) => cur(acc), initialValue);
+        console.log(res);
+
+        const arr3 = [1,2,3,4,5,6,7,8,9,10];
+        const res2 = arr3.reduce((acc,cur) => {
+            // javascript에서 0, undefined, null은 false
+            acc.push(cur%2 ? "홀수":"짝수");
+            return acc;
+        },[]);
+
+        console.log(res2);
+
+        // map으로 가능!
+
+
+        // reduce로 배열 평균 구하기
+        const numbers2 = [1,2,3,4,5];
+        const avg = numbers2.reduce((acc,cur, index, array) =>{
+            if(index === array.length -1){
+                return (acc + cur) / array.length;
+            }
+            return acc+cur;
+        },0);
+        console.log(avg);
+
+
+        //p1
+        const arr4 = [1,2,3,4,5,6,7,8,9,10];
+        const res4 = arr4.filter(n => n%2 === 0).map(n => n*10);
+        console.log(res4);
+
+        //p2
+        const res4_2 = arr4.reduce((acc,cur) => {if(cur%2===0) acc.push(cur*10); return acc},[]);
+        console.log(res4);
+
+        //p3
+        const orderList = [
+            {
+                menu: "치킨",
+                price: 17000,
+                event: false,
+                count: 50
+            },
+            {
+                menu: "돈까스",
+                price: 8500,
+                event: true,
+                count: 99
+            },
+            {
+                menu: "마라탕",
+                price: 8000,
+                event: false,
+                count: 100
+            },
+            {
+                menu: "쫄면",
+                price: 6500,
+                event: false,
+                count: 0
+            },
+            {
+                menu: "피자",
+                price: 16500,
+                event: true,
+                count: 10
+            },
+        ];
+
+        const processedList = orderList.reduce((acc,cur) => {
+            if(cur.count !=0){
+                if(cur.event){
+                    cur.saledPrice = cur.price * 0.9;
+                }
+                acc.push(cur);
+                return acc;
+            }
+            return acc;
+        },[]);
+
+        console.log(processedList);
+
+        processedList.forEach(p => {
+            let text = p.saledPrice ? `${p.menu} ${p.price}->${p.saledPrice} ${p.event} ${p.count}` : `${p.menu} ${p.price} ${p.event} ${p.count}`;
+            document.querySelector("body").innerHTML += text + "<br>";
+        })
+
+    </script>
+</body>
+</html>

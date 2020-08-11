@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // case 1
+        [3,5,4,2].forEach(num =>{
+            console.log(num);
+        });
+        // case 2
+        function cb(num){
+            console.log(num);
+        }
+
+        [3,5,4,2].forEach(cb);
+        // case 1과 2 동일
+
+        let cnt = 0;
+
+        [4,3,5,1,6,5].forEach(num => {
+            if(num % 2 != 0) cnt += 1;
+        })
+        alert(cnt);
+
+        let pplus = [];
+        let mminus = [];
+
+        [-5,3,4,2,-7,-2,7].forEach(num => {if(num>0) pplus.push(num); else mminus.push(num);});
+        console.log(pplus);
+        console.log(mminus);
+
+
+
+
+    </script>
+</body>
+</html>
