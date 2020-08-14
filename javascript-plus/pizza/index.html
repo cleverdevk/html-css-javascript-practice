@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <!-- defer는 html이 upload되고나서 실행 되도록 하는 것 -->
+    <!-- head에 bootstrap js 스크립트 추가시 필요하다. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .object{
+            color: white;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-wrapper m-3 p-3 border" style="width:300px">
+        <div class="mb-3">
+            <div class="form-file">
+                <input type="file" class="form-file-input" id="input-file"/>
+                <label class="form-file-label" for="input-file">
+                    <span class="form-file-text">이미지를 선택해주세요.</span>
+                    <span class="form-file-button">파일</span>
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="input-width" class="form-label">가로길이</label>
+            <input type="text" class="form-control" id="input-width" placeholder="width"/>
+        </div>
+        <div class="mb-3">
+            <label for="input-height" class="form-label">세로길이</label>
+            <input type="text" class="form-control" id="input-height" placeholder="height"/>
+        </div>
+
+        <button id="create-button" class="btn btn-primary w-100">생성하기</button>
+
+    </div>
+    <script>
+        class Obj {
+            constructor(type, file){
+                this.type = type;
+                this.file = file;
+            }
+        }
+
+        class Food extends Obj {
+            constructor(file, width, height){
+                super("Food", file);
+                this.width = width;
+                this.height = height;
+            }
+
+            createObject(){
+                this.tag = document.createElement("div");
+                this.tag.style.width = this.width;
+                this.tag.style.height = this.height;
+                this.tag.style.backgroundImage = `url(${this.file})`;
+                this.tag.classList.add("object");
+                document.querySelector("body").append(this.tag);
+            }
+            // 화살표 함수 : bind하지 않아도, 상위 객체를 가르킨다.
+            //moveEvent = (e) => {
+            moveEvent(e) {
+                //console.log(this);
+                const offsetLeft = this.tag.offsetLeft;
+                const offsetTop = this.tag.offsetTop;
+                //console.log(offsetLeft);
+                //console.log(offsetTop);
+                if(e.code === "ArrowUp"){
+                    this.tag.style.top = offsetTop - 50 + "px";
+                } else if(e.code === "ArrowRight"){
+                    this.tag.style.left = offsetLeft + 50 + "px";
+                }
+                else if(e.code === "ArrowDown"){
+                    this.tag.style.top = offsetTop + 50 + "px";
+                }
+                else if(e.code === "ArrowLeft"){
+                    this.tag.style.left = offsetLeft - 50 + "px";
+                }
+            }
+            move(){
+                // 화살표 함수를 사용하면 바인드(명시적 바인딩) 필요 없음.
+                this.moveEvent = this.moveEvent.bind(this);
+                document.querySelector("body").addEventListener("keydown",this.moveEvent);
+            }
+
+            deleteMove(){
+
+                document.querySelector("body").removeEventListener("keydown",this.moveEvent);
+            }
+        }
+
+        const inputFile = document.querySelector("#input-file");
+        const inputWidth = document.querySelector("#input-width");
+        const inputHeight = document.querySelector("#input-height");
+
+        const createButton = document.querySelector("#create-button");
+
+        let pizza = "";
+
+        createButton.addEventListener("click", function(){
+            if(!Number(inputWidth.value) || !Number(inputHeight.value)){
+                alert("가로와 세로에 숫자를 입력해주세요.");
+                inputWidth.value = "";
+                inputHeight.value = "";
+                return;
+            }
+            const reader = new FileReader();
+            reader.readAsDataURL(inputFile.files[0]);
+            
+            //읽어오고나서 후의 행동
+            reader.onload = function(){
+                if(pizza) pizza.deleteMove();
+                pizza = new Food(reader.result,`${inputWidth.value}px`, `${inputHeight.value}px`);
+                pizza.createObject();
+                pizza.move();
+            }
+            
+        });
+
+    </script>
+    
+</body>
+</html>

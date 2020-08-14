@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function parsing4(){
+            //substr(start, count) substring(start, end)
+            const abc = "abcdef"
+            const a = abc.substr(2,3)
+            const b = abc.substring(2,3);
+            const c = abc.substring(2,5);
+
+            console.log(a); // out : cde
+            console.log(b); // out : c
+            console.log(c); // out : cde
+        }
+        function parsing5(){
+            let a = "";
+            for (let j = 0;j<2;j++){
+                for(let i = 1;i<10;i++){
+                    a += String(i);
+                }
+            }
+            let b = prompt("숫자 2개 입력 : ").split(' ');
+            let start = a.indexOf(b[0]);
+            let res = "";
+            while(1){
+                res += a[start];
+                if(a[start] == b[1]) break;
+                start++;
+            }
+            alert(res);
+        }
+        function parsing6(){
+            let a = "ABCDEF[1599]AAQ";
+            let start = a.indexOf('[');
+            let end = a.indexOf(']', start);
+            let res = Number(a.substring(start+1,end)) + 1;
+            alert(res);
+        }
+        function parsing7(){
+            let a = "AB[100]T[41]ABS[1][5]BTS";
+            let starts = [];
+            let ends = [];
+            let sum = 0;
+            let idx = -1;
+            while(1){
+                idx = a.indexOf("[",idx+1);
+                if(idx != -1){
+                    starts.push(idx);
+                }
+                else{
+                    break;
+                }
+            }
+            idx = -1;
+            while(1){
+                idx = a.indexOf("]",idx+1);
+                if(idx != -1){
+                    ends.push(idx);
+                }
+                else{
+                    break;
+                }
+            }
+            for(let i = 0;i<starts.length;i++){
+                let x = Number(a.substring(starts[i]+1,ends[i]));
+                sum += x;
+            }
+            alert(sum);
+        }
+        parsing7();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "bts@macdonald.co.kr||inho@mincoding.co.kr||json@jyp.com";
+        let newStr = str.replace(/.co.kr|.com/g, ".net");
+        const arr = str.split("||");
+        let newArr = [];
+        for(let i=0;i<arr.length;i++){
+            newArr.push(arr[i].split("@")[0]);
+        }
+        console.log(newArr);
+    </script>
+    
+</body>
+</html>

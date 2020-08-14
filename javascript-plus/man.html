@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 클래스 첫 글자는 대문자
+        class Man{
+            // let age = 15; 처럼은 안된다.
+            constructor(){
+                this.age = 20;
+            }
+
+            abc(){
+                alert(this.age);
+            }
+        }
+
+        // let m = new Man();
+        // let a = new Man();
+        // m.abc();
+
+        class Man2{
+            constructor(a,b){
+                this.str = "생성시작" + String(a) + " " + String(b);
+            }
+
+            abc(t){
+                for(let i = 0; i <t;i++){
+                    alert(this.str);
+                }
+            }
+        }
+
+        let m = new Man2(2,4);
+        m.abc(3);
+
+        
+    </script>
+</body>
+</html>

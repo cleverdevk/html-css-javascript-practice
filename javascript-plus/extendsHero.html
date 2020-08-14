@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Man{
+            constructor(){
+                this.hp = 100;
+            }
+            run(){
+                this.hp -= 10;
+            }
+            showHP(){
+                console.log(this.hp);
+            }
+        }
+        class SuperMan extends Man {
+            fly(){
+                alert("FLY");
+            }
+        }
+        
+        let m  = new SuperMan();
+        m.run();
+        m.showHP();
+        m.fly();
+        
+
+    </script>
+</body>
+</html>

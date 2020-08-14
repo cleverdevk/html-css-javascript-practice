@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function p1(){
+            let a = prompt("입력해");
+            let b = a.split(' ');
+
+            res = "";
+            if(b[0] == b[1] && b[1] == b[2]){
+                res = "Very Good";
+            }
+            else if(b[1] != b[2] && b[0] != b[2] && b[0] != b[1]){
+                res ="Only One";
+            }
+            else{
+                res = "Two";
+            }
+            alert(res)
+        }
+        function p2(){
+            let a = "ABCMINMIN";
+            let b = "BBQCOCO";
+            let c = a+b;
+            let d = [];
+            for(let i =c.length-1;i>=0;i--){
+                if(i%2==0){
+                    d.push(c[i]);
+                }
+            }
+            alert(d)
+        }
+        function parsing1(){
+            const a = "BTSWORLDBTS";
+            let g1 = a.indexOf("BTS");
+            let g2 = a.indexOf("BTS",4);
+            alert(g1);
+            alert(g2);
+        }
+        
+        function parsing2(){
+            const  a= "KFCOCOBBQMINMINC";
+            let idx = 0;
+            let b = [];
+            for(let i = 0;i<a.length;i++){
+                let g1 = a.indexOf("C",idx+1);
+                if(g1 == -1) break;
+                idx = g1;
+                b.push(g1);
+            }
+            alert(b);
+        }
+
+        function parsing3(){
+            const  a= "BTSMINBTSMINBTSKKOPSM";
+            
+            let candidate = ["SM","MIN","OP","VO","TSM"]
+            let b = [0,0,0,0,0];
+            let i = 0;
+            let Max = 0;
+            let MaxIndex = 0;
+            for(let c of candidate){
+                let idx = -1;
+                while (1){
+                    idx = a.indexOf(c,idx+1);
+                    b[i]++;
+                    if (idx == -1) break;
+                }
+                if(Max < b[i]){
+                    Max = b[i];
+                    MaxIndex = i;
+                }
+                i += 1;
+            }
+            
+            
+            alert(candidate[MaxIndex]);
+        }
+
+        
+        parsing3();
+    </script>
+</body>
+</html>

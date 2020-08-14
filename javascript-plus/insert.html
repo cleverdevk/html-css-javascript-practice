@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function insert(str, index, target){
+            let a = str.substring(0,index);
+            let b = str.substring(index, str.length);
+            return a + target + b;
+        }
+        function erase(str,index,len){
+            let a = str.substring(0,index);
+            let b = str.substring(index+len, str.length);
+
+            return a+b;
+        }
+        let str = "ABCDEFG";
+        let res = insert(str,3,"XYZ");
+        let res2 = erase(res,3,3);
+        alert(res2);
+    </script>
+</body>
+</html>

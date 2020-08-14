@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title>HOBBY : 나만의 취미</title>
+</head>
+<style>
+    body{
+        margin: 0 0;
+        background-color: #fefefe;
+        display: flex;
+        flex-direction: column;
+    }   
+    .title{
+        border-bottom: 1px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        height: auto;
+        background-color: #232323;
+        z-index: 100;
+        color:gainsboro;
+    }
+    .title-side{
+        margin: 0 15px;
+    }
+    .side-item{
+        padding:0 5px;
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        height: 1500px;
+    }
+    .profile-photo{
+        height: 30px;
+        width: 30px;
+        border-radius: 100%;
+        background-image: url("image/travel.jpg");
+        background-size: cover;
+        border: 1px solid #dddd;
+    }
+    .card:hover{
+        border: 2px solid lightseagreen;
+    }
+    footer{
+        padding: 10px 15px;
+        border-top: 1px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: gray;
+    }
+</style>
+<body>
+    <header class="mb-5">
+        <div class="title">
+            <span class="title-side">놀라운 취미!</span>
+            <h2 style="font-weight: bold;">HOBBY</h2>
+            <div class="title-side">
+                <span class="side-item">회원가입</span>
+                <span class="side-item">로그인</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <header>
+            <h1 style="font-weight: bold; text-shadow: 1px 1px 1px gray;">나만의 취미를 이곳에서 찾아보세요!</h1>
+        </header>
+        <section>
+            <div style="display: flex; flex-direction: row; margin-top: 50px">
+                <div class="card m-3" style="width: 240px;">
+                    <img src="./image/photograpy.jpg" class="card-img-top" alt="cat" style="width: auto; height: 270px; border: 1px solid #dddd">
+                    <div class="card-body">
+                      <div class="card-title text-center" style="font-weight: bold;">원데이 사진 클래스</div>
+                      <div style="display: flex; align-items: center; margin:15px 0">
+                        <div class="profile-photo"></div>
+                        <div style="margin-left: 10px;">강인배</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card m-3" style="width: 240px;">
+                    <img src="./image/travel.jpg" class="card-img-top" alt="cat" style="width: auto; height: 270px; border: 1px solid #dddd">
+                    <div class="card-body">
+                      <div class="card-title text-center" style="font-weight: bold;">원데이 여행 클래스</div>
+                      <div style="display: flex; align-items: center;">
+                        <div class="profile-photo"></div>
+                        <div style="margin-left: 10px;">강인배</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card m-3" style="width: 240px;">
+                    <img src="./image/programming.jpg" class="card-img-top" alt="cat" style="width: auto; height: 270px; border: 1px solid #dddd">
+                    <div class="card-body">
+                      <div class="card-title text-center" style="font-weight: bold;">원데이 코딩 클래스</div>
+                      <div style="display: flex; align-items: center;">
+                        <div class="profile-photo"></div>
+                        <div style="margin-left: 10px;">강인배</div>
+                      </div>
+                    </div>
+                  </div>
+    
+            </div>
+        </section>        
+    </main>
+    <footer>
+        <div>SSAFY 4기 서울 10반</div>
+        <div>강 인 배</div>
+        <div>cleverdevk@gmail.com</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        function card_click(){
+            alert("준비중입니다.");
+        }
+        let cards = document.querySelectorAll(".card");
+        for(let card of cards){
+            card.addEventListener("click",card_click);
+        }
+    </script>
+</body>
+</html>
