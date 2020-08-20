@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% const dataArray = [{id:1, text:"데이터1"},{id:2, text:"데이터2"}] %>
+    <% data.forEach(el => { %> 
+        <div>
+            <%= el*3 %>
+        </div> 
+    <% }) %> 
+    <% dataArray.forEach(el => { %> 
+        <div>
+            <span>id : <%= el.id %></span>
+            <span>데이터<%= el.text %>입니다.</span>
+        </div> 
+    <% }) %> 
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <div class="h5 text-white text-decoration-none" href="#">
+                JSONPlaceholder
+            </div>
+        </div>
+    </nav>
+    
+    <main class="p-5" style="display: flex; flex-wrap: wrap;">
+        <% photos.forEach(li => { %>
+            <div class="card m-2" style="width: 18rem;">
+                <img src="<%= li.thumbnailUrl %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= li.title %></h5>
+                </div>
+            </div>
+        <% }) %>
+    </main>
+
+    <nav class="p-5" aria-label="...">
+        <ul class="pagination">
+            <% if (page === 1) { %> 
+                <li class="page-item disabled">
+                    <span class="page-link" >Previous</span>
+                  </li>
+            <% } else { %>
+                <li class="page-item">
+                    <a class="page-link" href="/photos/<%= id %>/?page=<%=page-1%>" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+            <% } %> 
+          <% for( let i = 1; i <= length; i++ ) { %>
+            <% if (page === i) { %>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="/photos/<%= id %>/?page=<%=i%>"><%=i%> <span class="sr-only">(current)</span></a>
+                  </li>
+            <% } else { %>
+            <li class="page-item"><a class="page-link" href="/photos/<%= id %>/?page=<%=i%>"><%=i%> </a></li>
+            <% } %> 
+          <% } %>
+          <% if (page === length) { %> 
+            <li class="page-item disabled">
+                <span class="page-link" >Next</span>
+              </li>
+        <% } else { %>
+            <li class="page-item">
+                <a class="page-link" href="/photos/<%= id %>/?page=<%=page+1%>" tabindex="-1" aria-disabled="true">Next</a>
+              </li>
+        <% } %> 
+        </ul>
+      </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    
+</body>
+</html>
