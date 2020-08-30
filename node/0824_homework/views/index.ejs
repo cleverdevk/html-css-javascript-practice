@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFORMATION</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="ml-3"  style="color:wheat; font-size: 25px;">USER INFO</div>
+    </nav>
+
+    <form action="./add" method="POST"
+          class="justify-content-center align-items-center mt-5 mr-3">
+          <div class="w-100 d-flex justify-content-between align-items-center mb-3">
+            <div class="mr-2 w-25 ml-3">이름</div>
+            <div class="mr-2 w-25 ml-3">이메일</div>
+            <div class="mr-2 w-25 ml-3">주소</div>
+            <div class="mr-2 w-25 ml-3">전화번호</div>
+            <div class="mr-2 w-25 ml-3">개인정보동의(0/1)</div>
+            <div class="mr-2 w-25 ml-3"></div>
+          </div>
+          
+        <div class="w-100 d-flex justify-content-between align-items-center mr-3">
+            <input
+                name="name"
+                type="text"
+                class="form-control w-25 ml-3"
+                placeholder="이름를 입력하세요"
+            />
+            <input
+                name="email"
+                type="text"
+                class="form-control w-25 ml-3"
+                placeholder="이메일을 입력하세요"
+            />
+            <input
+                name="address"
+                type="text"
+                class="form-control w-25 ml-3"
+                placeholder="주소를 입력하세요"
+            />
+            <input
+                name="phone"
+                type="text"
+                class="form-control w-25 ml-3"
+                placeholder="전화번호를 입력하세요"
+            />
+            <input
+                name="agree"
+                type="text"
+                class="form-control w-25 ml-3"
+                placeholder="0:미동의 1:동의"
+            />
+            <button type="submit" class="btn btn-primary ml-3 w-25">추가하기</button>
+        </div>
+
+        <ul class="list-group w-100 mt-3 ml-3 mr-3">
+            <% data.forEach(li => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>
+                            <input
+                                class="form-check-input w-100 border-0 text-left"
+                                type="text"
+                                id="info_name<%=li.id%>"
+                                value="<%=li.name%>"
+                                readonly
+                            />
+                        </span>
+                        <span>
+                            <input
+                                class="form-check-input w-100 border-0 text-left"
+                                type="text"
+                                id="info_email<%=li.id%>"
+                                value="<%=li.email%>"
+                                readonly
+                            />
+                        </span>
+                        <span>
+                            <input
+                                class="form-check-input w-100 border-0 text-left"
+                                type="text"
+                                id="info_address<%=li.id%>"
+                                value="<%=li.address%>"
+                                readonly
+                            />
+                        </span>
+                        <span>
+                            <input
+                                class="form-check-input w-100 border-0 text-left"
+                                type="text"
+                                id="info_phone<%=li.id%>"
+                                value="<%=li.phone%>"
+                                readonly
+                            />
+                        </span>
+                        <span>
+                            <input
+                                class="form-check-input w-100 border-0 text-left"
+                                type="text"
+                                id="info_agree<%=li.id%>"
+                                value="<%=li.agree%>"
+                                readonly
+                            />
+                        </span>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-warning btn-sm w-100"
+                                    onclick="updateInfo('<%=li.id%>')"
+                                    type="button"
+                                    id="update<%=li.id%>">
+                                수정
+                            </button>
+                            <button class="btn btn-danger btn-sm ml-3 w-100"
+                                    onclick="deleteInfo('<%=li.id%>')"
+                                    type="button"
+                                    id="delete<%=li.id%>">
+                                삭제
+                            </button>
+                        </div>
+                </li>
+            <% }) %>
+        </ul>
+        
+    </form>
+
+
+    <script>
+        function updateInfo(id){
+            const updateButton = document.querySelector(`#update${id}`);
+            const nameTextbox = document.querySelector(`#info_name${id}`);
+            const emailTextbox = document.querySelector(`#info_email${id}`);
+            const addressTextbox = document.querySelector(`#info_address${id}`);
+            const phoneTextbox = document.querySelector(`#info_phone${id}`);
+            const agreeTextbox = document.querySelector(`#info_agree${id}`);
+
+            if(updateButton.classList.contains("btn-info")){
+                // update
+                const name = nameTextbox.value;
+                const email = emailTextbox.value;
+                const address = addressTextbox.value;
+                const phone = phoneTextbox.value;
+                const agree = agreeTextbox.value;
+                location.href=`/update/info/${id}?name=${name}&email=${email}&address=${address}&phone=${phone}&agree=${agree}`;
+            }
+
+            updateButton.classList.replace("btn-warning","btn-info");
+            nameTextbox.removeAttribute("readonly");
+            emailTextbox.removeAttribute("readonly");
+            addressTextbox.removeAttribute("readonly");
+            phoneTextbox.removeAttribute("readonly");
+            agreeTextbox.removeAttribute("readonly");
+            nameTextbox.focus();
+        }
+        function deleteInfo(id){
+            const deleteButton = document.querySelector(`#delete${id}`);
+            const deleteQuestion = confirm("삭제하시겠습니까?");
+            if(deleteQuestion){
+                location.href=`/delete/info/${id}`;
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+</html>

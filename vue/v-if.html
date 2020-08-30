@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="data % 3 == 0">a</div>
+        <div v-if="data % 3 == 0">b</div>
+        <div v-if="data % 3 == 0">c</div>
+
+        <div v-if="data % 3 == 1">d</div>
+        <div v-if="data % 3 == 1">e</div>
+
+        <div v-if="data % 3 == 2">f</div>
+        <div v-if="data % 3 == 2">g</div>
+        <button v-on:click="clk">클릭</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                data: 0
+            },
+            methods:{
+                clk(){
+                    this.data += 1;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

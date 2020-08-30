@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatChat</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <ul class="chat-list" style="height: 500px; overflow: scroll;">
+
+    </ul>
+    <div>
+        <input type="text" id="chat-text">
+        <button id="send-button">보내기</button>
+        <button class="disconnect-button">나가기</button>
+    </div>
+    <script>
+        const chatList = document.querySelector(".chat-list");
+        const chatText = document.querySelector("#chat-text");
+        const sendButton = document.querySelector("#send-button");
+        const disconnectButton = document.querySelector(".disconnect-button");
+        const socket  = io('/chat-room');
+
+        sendButton.addEventListener("click", function(e){
+            e.preventDefault(); // 엔터를 치거나 제출하기를 눌렀을 때 기본 기능을 막아주는 것.
+            socket.emit("chat message", chatText.value);
+        })
+        
+        disconnectButton.addEventListener("click",function(){
+            socket.disconnect();
+            alert("연결이 종료되었습니다.");
+        });
+
+        socket.on("chat message", msg => {
+            chatList.innerHTML += `<li>${msg}</li>`;
+            console.log(msg);
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            background-color: skyblue;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+        .day-weather-header{
+            height: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+        .main-header{
+            font-size: 24px;
+        }
+
+        .day-weather-component{
+            display: flex;
+            align-items: center;
+        }
+        .day-temp-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+        }
+        .day-temp{
+            font-size: 10px;
+        }
+        .day-image-wrapper{
+            width: 60px;
+            height: 60px;
+        }
+
+        .day-image-wrapper > img{
+            width: 100%;
+        }
+
+        .day-information-container{
+            margin-left: 20px;
+        }
+        .day-information-location, .day-information-humidity{
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .day-information-humidity{
+            margin-top: 5px;
+        }
+        .day-information-text{
+            margin-left: 5px;
+        }
+
+        /* main part */
+        .five-days-weather-section{
+            /*border-top: 1px solid #dddddd;*/
+            padding: 30px 30px 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .weather-component{
+            padding: 15px;
+            width: 20%;
+            max-width: 280px;
+            min-width: 250px;
+            min-height: 450px;
+            text-align: center;
+            box-shadow: 0 0 10px 2px rgba(0,0,0,0.4);
+            background-color: white;
+            margin: 20px;
+        }
+
+        .weather-date{
+            font-size: 24px;
+            color: gray;
+        }
+        .weather-wrapper{
+            margin-top: 50px;
+            
+        }
+        .weather{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn-local-weather{
+            display: block;
+            text-align: center;
+            padding-top: 15px;
+            width: 180px;
+            height: 40px;
+            margin: 10px auto;
+            background-color: white;
+            font-size: 20px;
+            color: black;
+            border-radius: 5px;
+            box-shadow: 0 0 5px 1px rgba(0,0,0,0.4);
+            margin-top : 30px;
+        }
+
+
+        @media all and (max-width: 768px){
+        .main-header{
+            display: none;
+        }
+        }
+    </style>
+</head>
+<body>
+    <header class="day-weather-header">
+        <div class="main-header">오늘의 날씨</div>
+        <div class="day-weather-component">
+            <div class="day-temp-container header-temp">
+                <div class="day-image-wrapper">
+                    <img src="./images/001-cloud.png" alt="금일의 날씨"/>
+                    <div class="day-temp">30º / 40º</div>
+                </div>
+            </div>
+
+            <div class="day-information-container">
+                <div class="day-information-location">
+                    <img src="./images/location.png" width="16px"/>
+                    <span class="day-information-text">봉천</span>
+                </div>
+                <div class="day-information-humidity">
+                    <img src="./images/025-humidity.png" width="16px"/>
+                    <span class="day-information-text">78%</span>
+                </div>
+            </div>
+        </div>
+        <div>오늘의 날씨</div>
+    </header>
+    <main>
+        <a class="btn-local-weather" href="./map_weather.html" style="text-decoration:none">
+            지역별 날씨 알아보기
+        </a>
+        <section class="five-days-weather-section">
+            <!-- <div class="weather-component">
+                <div>2020년 00월 00일</div>
+                <div class="day-temp-container">
+                    <div class="day-image-wrapper">
+                        <img src="images/001-cloud.png" alt="주간 날씨"/>
+                        <div class="day-temp">최소/최대</div>
+                    </div>
+                </div>
+            </div>
+             -->
+        </section>
+        <!-- <div id="map" style="margin-left: 50%; transform:translateX(-50%); width:400px; height:400px;"> -->
+        </div>
+    </main>
+    <script>
+        // 콜백 방식
+        // navigator.geolocation.getCurrentPosition(function(pos){
+        //     console.log(pos);
+        // });
+        const getPosition = function(options){
+            return new Promise(function(resolve, reject){
+                navigator.geolocation.getCurrentPosition(resolve, reject, options);
+            })
+        };
+        //getPosition().then(data => console.log(data));
+
+        const matchIcon = (data) => {
+            switch(data){
+                case "Clear": return "./images/039-sun.png";
+                case "Clouds": return "./images/001-cloud.png";
+                case "Rain": return "./images/003-rainy.png";
+                case "Snow": return "./images/006-snowy.png";
+                case "Thunderstorm": return "./images/045-thunder.png";
+                case "Drizzle": return "./images/031-snowflake.png";
+                case "Atmosphere": return "./images/033-hurricane.png";
+            }
+        }
+
+        // 컴포넌트화
+        const dayTempContainer = (data) => {
+            console.log(data);
+            const {main} = data.weather[0];
+            const icon = matchIcon(main);
+            console.log(icon);
+            const {temp_max, temp_min} = data.main;
+            const changeTempMin = (temp_min - 273.15).toFixed(1);
+            const changeTempMax = (temp_max - 273.15).toFixed(1);
+
+            return `
+            <div class="day-temp-container header-temp">
+                    <div class="day-image-wrapper">
+                        <img src=${icon} alt="금일의 날씨"/>
+                        <div class="day-temp">${changeTempMin}º / ${changeTempMax}º</div>
+                    </div>
+                </div>
+        `};
+        const dayInformationContainer = (data) => {
+            const {humidity} = data.main;
+            const {name} = data;
+            return `
+        
+            <div class="day-information-container">
+                    <div class="day-information-location">
+                        <img src="images/location.png" width="16px"/>
+                        <span class="day-information-text">${name}</span>
+                    </div>
+                    <div class="day-information-humidity">
+                        <img src="images/025-humidity.png" width="16px"/>
+                        <span class="day-information-text">${humidity}%</span>
+                    </div>
+                </div>
+        `};
+                
+        const dayComponent = (data) => `
+                ${dayTempContainer(data)}
+                ${dayInformationContainer(data)}
+        `;
+
+        const dayWeatherComponent = document.querySelector(".day-weather-component");
+        const fiveDaysWeatherSection = document.querySelector(".five-days-weather-section");
+
+        const separateDate = (arr,j,res) => {
+            for(let i=0;i<res.length;i++){
+                arr[j] = [];
+                if((i+1)%3===0) j +=1;
+            }
+            j=0;
+            for(let i=0;i<res.length;i++){
+                arr[j].push(res[i]);
+                if((i+1)%3===0) j+=1;
+            }
+            return arr;
+        }
+
+        function renderArray(separatedTimeArray){
+            separatedTimeArray.forEach(li => {
+                        console.log(li);
+                        const container = document.createElement("div");
+                        container.classList.add("weather-component");
+                        let tagData = "";
+                        const {dt_txt} = li[0];
+                        const date = dt_txt.split(" ")[0];
+                        console.log(date);
+                        tagData += `
+                        <div class="weather-date">
+                            ${date}
+                        </div>    
+                        `;
+                        tagData += `<div class="weather-wrapper">`;
+                            li.forEach((list) => {
+                                const time = list.dt_txt.split(" ")[1].split(":")[0];
+                                
+                                tagData += `<div class="weather">${time}시
+                                    ${dayTempContainer(list)}</div>`;
+                            });
+                        container.innerHTML = tagData;
+                        fiveDaysWeatherSection.append(container);
+                    });
+        }
+
+        function separateFunction(list){
+            return list.reduce((acc,cur) => {
+                        const {dt_txt} = cur;
+                        const splitHour = dt_txt.split(" ")[1].split(":")[0];
+                        if (splitHour === "09" ||
+                        splitHour == "15" ||
+                        splitHour == "21"){
+                            acc.push(cur)
+                        }
+                        return acc;
+                    },[]);
+        }
+
+        const getData = async (type) => {
+            try{
+                const pos = await getPosition();
+                const {latitude, longitude} = pos.coords;
+                setMap(latitude,longitude);
+                const {data} = await axios.get(`http://api.openweathermap.org/data/2.5/${type}?lat=${latitude}&lon=${longitude}&appid=9d5286340057ca531804abe16cea5454`);
+                console.log(data);
+                if (type === "weather"){
+                    dayWeatherComponent.innerHTML = dayComponent(data);
+                } else if(type=== "forecast"){
+                    const {list} = data;
+                    const separatedTime = separateFunction(list);
+                    const separatedTimeArray = separateDate([],0,separatedTime);                    
+                    renderArray(separatedTimeArray);
+                    
+                }
+            }
+            catch(err){
+                console.log(err);
+                const {data} = await axios.get(`http://api.openweathermap.org/data/2.5/${type}?q=Seoul&appid=9d5286340057ca531804abe16cea5454`);
+                console.log(data);
+                if (type==="weather"){
+                    dayWeatherComponent.innerHTML = dayComponent(data);
+                } else if(type==="forecast"){
+                    const {list} = data;
+                    const separatedTime = separateFunction(list);
+                    const separatedTimeArray = separateDate([],0,separatedTime);                    
+                    renderArray(separatedTimeArray);
+                }
+            }
+        }
+        getData("weather");
+        getData("forecast");
+
+    </script>
+    
+</body>
+</html>

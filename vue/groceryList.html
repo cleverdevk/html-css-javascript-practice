@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <!-- props로 item이라는 값을 넘겨줌 -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+            <!-- <li v-for="item in groceryList">
+                {{item.text}}
+            </li> -->
+        </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("todo-item", {
+            props:['todo'],
+            template:'<li>{{todo.text}}</li>'
+        })
+        const app = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    groceryList:[
+                        {id:0, text: "vegetables"},
+                        {id:0, text: "cheese"},
+                        {id:0, text: "fruit"},
+                        {id:0, text: "eggs"}
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

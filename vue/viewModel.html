@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // MVVM pattern
+    const h1 = document.createElement("h1");
+    document.body.appendChild(h1);
+    const viewModel = {};
+    let model = "";
+    Object.defineProperty(viewModel, 'model', {
+        get() {return model;},
+        set(value){
+        model = value;
+        h1.innerHTML = model;
+        }
+    });
+    viewModel.model = "abc";
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <word start-word="시작"></word>
+        <word start-word="초밥"></word>
+        <word start-word="이리듐"></word>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.component("word", {
+            template:`
+            <div>
+                <div>{{current}}</div>
+                <input type="text" v-model="inputValue"/>
+                <button v-on:click="go">입력</button>
+                <div>{{res}}</div>
+            </div>
+            `,
+            props:['start-word'],
+            data(){
+                return{
+                    // camel case로 자동 변환됨 start-word => startWord
+                    current: this.startWord,
+                    inputValue: "",
+                    res: ""
+                };
+            },
+            methods:{
+                go(){
+                    const last = this.current[this.current.length-1];
+                    if( this.inputValue[0] === last){
+                        this.res = "정답"
+                        this.current = this.inputValue;
+                    } else{
+                        this.res = "땡!"
+                    }
+                }
+            }
+        });
+
+        // 컴포넌트화 하기 전
+        const app = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    current:"시작",
+                    inputValue: "",
+                    res: ""
+                }
+            },
+            // methods:{
+            //     go(){
+            //         const last = this.current[this.current.length-1];
+            //         if( this.inputValue[0] === last){
+            //             this.res = "정답"
+            //             this.current = this.inputValue;
+            //         } else{
+            //             this.res = "땡!"
+            //         }
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>

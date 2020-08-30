@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 { color: red }
+        .c2 { color: salmon }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="cls">HI</div>
+        <button v-on:click="btn">컬러바꾸기</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return{
+                    msg: "hello world",
+                    cls: "c1"
+                }
+            },
+            methods:{
+                btn(){
+                    this.cls = "c2";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

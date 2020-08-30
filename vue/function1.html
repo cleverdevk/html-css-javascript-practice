@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <h1>{{msg}}</h1>
+        <button v-on:click='bbq'>Hey</button> -->
+        <textarea>{{msg}}</textarea>
+        <button v-on:click='change'>Hey</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // const app = new Vue({
+        //     el: "#app",
+        //     // data: {
+        //     //     msg:"Hello world"
+        //     // }
+        //     // 위에보단 아래를 선호
+        //     data(){
+        //         return {
+        //             msg: "Hello World",
+        //             msg2: "Why so serious?"
+        //         }
+        //     },
+        //     methods: {
+        //         bbq(){
+        //             // this로 접근해야한다.
+        //             this.msg = this.msg2;
+        //         }
+        //     }
+        // });
+        const app = new Vue({
+            el:"#app",
+            data(){
+                return {
+                    msg: "버튼을 눌러주세요.",
+                    msg2: "하하"
+                }
+            },
+            methods: {
+                change(){
+                    
+                    this.msg = this.msg2;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

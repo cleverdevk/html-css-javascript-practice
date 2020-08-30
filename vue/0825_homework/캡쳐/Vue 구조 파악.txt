@@ -1,0 +1,5 @@
+public/index.html => 원 페이지. 실제로 보여지는 페이지, 이 안에 자동으로 컴포넌트들이 만들어져서 보여지게 된다.
+src/components => 컴포넌트를 저장하는 곳.
+src/router/index.js => router-link 태그에 따른 경로와 동작을 지정할 수 있다.
+src/views => templete, script, style을 통해서 페이지를 만들어내는 곳.
+src/main.js => Vue 객체를 생성하고 순서대로 동작을 수행하도록 지정하는 곳, 이번 프로젝트에서는 router를 거쳐 store 그리고 render하여 보여주는 과정이라고 한다.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+           {{message}} 
+        </div>
+        <div>
+            {{reversedMessage2}} 
+         </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    message:"안녕하세요~ 감사해요~ 잘있어요~ 다시만나요~"
+                }
+            },
+            // 데이터를 다르게 표현하고 싶을 때, 캐싱 기능 지원
+            computed:{
+                reversedMessage2(){
+                    return this.message.split("").reverse().join("");
+                }
+            },
+            methods:{
+                reversedMessage(){
+                    return this.message.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
