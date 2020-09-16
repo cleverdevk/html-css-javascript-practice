@@ -9,7 +9,7 @@ this repository is for studying web frontend & backend.
 
 ### Projects
 - PortFolio
-- Weather Info
+- [Weather Info](https://cleverdevk.github.io/html-css-javascript-practice/prj/prj2/index.html)
 - Log Manager
 
 ### Clone Coding
