@@ -8,6 +8,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs").promises;
 const cors = require('cors');
+const {logger} = require('./utils/winston')
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -110,8 +111,10 @@ app.post("/api/login", async (req, res) => {
         const compareResult = await comparePassword(password, hashedPassword);
         console.log(compareResult);
         if (compareResult) {
+            logger.info("로그인 되었습니다.")
             return res.json({login:true, id: userData.dataValues.id});
         } else {
+            logger.error("로그인에 실패하였습니다.")
             throw new Error();
         }
 
@@ -132,6 +135,32 @@ app.get("/api/post", async (req, res) => {
     }
 });
 
+app.get("/api/post/:id", async (req, res) => {
+    try {
+        const {id} = req.params;
+        const {dataValues} = await Post.findOne({
+            where:{
+                id:id
+            }
+        });
+        // console.log(dataValues);
+        if(dataValues.file){
+            console.log(dataValues.file.split(".").reverse()[0]);
+            if(dataValues.file.split(".").reverse()[0] === "txt" || "log"){
+                // 파일 읽기
+                const log = await fs.readFile(`${__dirname}/uploads/${dataValues.file}`);
+                return res.json({post: dataValues, log:log.toString().trim()});
+            }
+        }else{
+            throw new Error("파일이 없습니다.");
+        }
+        return res.json({post:dataValues});
+    } catch (error) {
+        logger.error(error);
+        return res.json({post:false});
+    }
+})
+
 // 게시글 작성
 app.post("/api/post", upload.single("file"), async (req, res) => {
     try {
@@ -147,10 +176,23 @@ app.post("/api/post", upload.single("file"), async (req, res) => {
             user_id: userId
         });
         console.log(post);
+        logger.info("업로드에 성공하였습니다.");
         return res.json({upload:true});
     } catch(err) {
         console.log(err);
+        logger.error(err);
         return res.json({upload:false});
+    }
+});
+
+app.get("/api/download", async (req, res) => {
+    try {
+        const {fileName} = req.query;
+        const file = await fs.readFile(`${__dirname}/uploads/${fileName}`);
+        return res.send(file);
+    } catch (error) {
+        logger.error(error);
+        return res.json({download:false});
     }
 });
 

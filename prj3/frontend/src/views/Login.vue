@@ -66,6 +66,9 @@ import axios from "axios";
                     //   메인페이지로 이동
                     this.$router.push("/");
                   }
+                  else{
+                    alert("아이디 비밀번호를 확인하세요.");
+                  }
                   
               } catch (err) {
                   console.log(err);

@@ -157,7 +157,7 @@ export default {
                             full_name:"날씨 알리미",
                             content:"HTML/CSS/Javascript 및 OpenWeatherMap API를 활용한 날씨 알림 WEB Application.",
                             image:"../assets/weather2.jpg",
-                            page:"../assets/prj2/index.html"
+                            page:"https://cleverdevk.github.io/html-css-javascript-practice/prj/prj2/"
           }
         ]
       }

@@ -6,6 +6,7 @@ import Closing from '../views/Closing.vue'
 import Link from '../views/Link.vue'
 import Skill from '../views/Skill.vue'
 import Stack from '../views/Stack.vue'
+import AddStack from '../views/AddStack.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ Vue.use(VueRouter)
     path: '/closing',
     name: 'Closing',
     component: Closing
+  },
+  {
+    path: '/addstack',
+    name: 'AddStack',
+    component: AddStack
   },
 ]
 
